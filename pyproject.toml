@@ -1,0 +1,34 @@
+[project]
+name = "adhd-assistant"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "jinja2",
+    "python-multipart",
+    "chromadb",
+    "openai",
+    "langchain",
+    "langchain-community",
+    "langchain-chroma",
+    "langchain-openai",
+    "pydantic-settings",
+    "httpx",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+]
+
+[tool.uv]
+override-dependencies = [
+    # onnxruntime dropped Intel macOS (x86_64) support after 1.19.x
+    "onnxruntime<=1.19.2; sys_platform == 'darwin' and platform_machine == 'x86_64'",
+]
